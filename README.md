@@ -6,4 +6,4 @@ It serves as a central hub linking to Micah Miner's public dissertation research
 
 ## Links
 - **Live Site**: [minerclass.github.io](https://minerclass.github.io/)
-- **Main Website**: [micahminer.com](https://micahminer.com)
+- **Main Website**: [lnk.main_site](https://micahminer.com)
