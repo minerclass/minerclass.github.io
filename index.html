@@ -91,7 +91,20 @@
 #mjm-ecosystem .mjm-footer-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 #mjm-ecosystem .mjm-footer a{text-decoration:none}
 #mjm-ecosystem .mjm-footer a:hover{color:var(--mjm-gold)}
+#mjm-ecosystem .mjm-press{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.6fr);gap:clamp(26px,4vw,52px);align-items:start}
+#mjm-ecosystem .mjm-press-quote{border-left:2px solid var(--mjm-gold);padding-left:24px;margin:0}
+#mjm-ecosystem .mjm-press-quote blockquote{font-family:var(--mjm-display);font-size:clamp(1.45rem,3vw,2.3rem);line-height:1.08;letter-spacing:-.05em;margin:0 0 18px}
+#mjm-ecosystem .mjm-press-quote figcaption{color:var(--mjm-muted);font-size:.9rem;line-height:1.6}
+#mjm-ecosystem .mjm-press-quote figcaption cite{font-style:italic;color:var(--mjm-ink)}
+#mjm-ecosystem .mjm-press-quote figcaption a{color:var(--mjm-gold);text-decoration:none;font-weight:700}
+#mjm-ecosystem .mjm-press-quote figcaption a:hover{text-decoration:underline}
+#mjm-ecosystem .mjm-press-links{display:grid;gap:10px}
+#mjm-ecosystem .mjm-press-link{border:1px solid var(--mjm-line);background:var(--mjm-bg);padding:16px 18px;text-decoration:none;display:block;transition:.2s ease}
+#mjm-ecosystem .mjm-press-link:hover{border-color:var(--mjm-gold);transform:translateY(-2px)}
+#mjm-ecosystem .mjm-press-link strong{display:block;font-family:var(--mjm-display);font-size:1.02rem;letter-spacing:-.035em;margin-bottom:6px}
+#mjm-ecosystem .mjm-press-link span{display:block;color:var(--mjm-muted);font-size:.82rem;line-height:1.5}
 @media(max-width:900px){
+  #mjm-ecosystem .mjm-press{grid-template-columns:1fr}
   #mjm-ecosystem .mjm-hero-grid,#mjm-ecosystem .mjm-section-head{grid-template-columns:1fr}
   #mjm-ecosystem .mjm-projects{grid-template-columns:repeat(2,minmax(0,1fr))}
   #mjm-ecosystem .mjm-stage-list{grid-template-columns:repeat(5,210px);overflow-x:auto;scroll-snap-type:x proximity}
@@ -120,6 +133,7 @@
     <div class="mjm-shell mjm-nav-inner">
       <a class="mjm-brand" href="#mjm-top">micah<span>.</span>miner</a>
       <div class="mjm-nav-links">
+        <a href="#mjm-press">Press</a>
         <a href="#mjm-pathways">Pathways</a>
         <a href="#mjm-framework">Framework</a>
         <a href="#mjm-archive">Ecosystem</a>
@@ -141,6 +155,31 @@
       </div>
     </div>
   </header>
+
+  <section class="mjm-section" id="mjm-press">
+    <div class="mjm-shell">
+      <div class="mjm-section-head">
+        <h2>The vocabulary is <span>traveling.</span></h2>
+        <p>In July 2026, EdSurge published a practitioner account of one school's response to generative AI and reached for <em>unproductive success</em> to name what it was seeing. Worth noting less as press than as evidence: a concept built for the qualifying paper turned out to be useful to educators describing their own classrooms.</p>
+      </div>
+      <div class="mjm-press">
+        <figure class="mjm-press-quote">
+          <blockquote>The students had technically succeeded while learning very little.</blockquote>
+          <figcaption>Pattie Morales, attributing <em>unproductive success</em> to Miner &mdash; <cite>How My School Used Common Sense and Collaboration to Confront AI</cite>, <a href="https://www.edsurge.com/news/how-my-school-used-common-sense-and-collaboration-to-confront-ai" target="_blank" rel="noopener">EdSurge</a>, July 15, 2026.</figcaption>
+        </figure>
+        <div class="mjm-press-links">
+          <a class="mjm-press-link" href="https://digitalcommons.nl.edu/ie/vol18/iss1/4" target="_blank" rel="noopener">
+            <strong>When the Output Looks Like Learning</strong>
+            <span>The source of record. EdSurge cites the work under its qualifying-paper title, <em>Beyond Secondary Orality</em>; it was published in <em>i.e.: inquiry in education</em>, 18(1), Article 4.</span>
+          </a>
+          <a class="mjm-press-link" href="https://minerclass.github.io/pedagogical-friction-iste-ascd-decks/iste-ew/#1" target="_blank" rel="noopener">
+            <strong>ISTE Expert Webinar</strong>
+            <span>The companion talk making the same argument for a practitioner audience.</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="mjm-section mjm-section-alt" id="mjm-pathways">
     <div class="mjm-shell">
