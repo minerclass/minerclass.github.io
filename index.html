@@ -99,12 +99,19 @@
 #mjm-ecosystem .mjm-press-quote figcaption a{color:var(--mjm-gold);text-decoration:none;font-weight:700}
 #mjm-ecosystem .mjm-press-quote figcaption a:hover{text-decoration:underline}
 #mjm-ecosystem .mjm-press-links{display:grid;gap:10px}
+#mjm-ecosystem .mjm-feature{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:clamp(28px,6vw,72px);align-items:center;padding:clamp(30px,5vw,56px);border:1px solid var(--mjm-line);border-left:7px solid var(--mjm-teal);border-radius:22px;background:linear-gradient(135deg,rgba(19,130,125,.13),rgba(17,19,24,.02));box-shadow:0 20px 60px rgba(0,0,0,.13)}
+#mjm-ecosystem .mjm-feature-kicker{display:block;margin-bottom:10px;color:var(--mjm-teal);font:800 .68rem/1 var(--mjm-mono);letter-spacing:.1em;text-transform:uppercase}
+#mjm-ecosystem .mjm-feature h2{margin:0 0 14px;font-size:clamp(2.1rem,4.5vw,4.1rem)}
+#mjm-ecosystem .mjm-feature p{margin:0;color:var(--mjm-muted);font-size:1rem;line-height:1.75}
+#mjm-ecosystem .mjm-feature-thesis{padding:22px;border:1px solid var(--mjm-line);border-radius:16px;background:var(--mjm-surface);font:400 1.16rem/1.6 Georgia,"Times New Roman",serif}
+#mjm-ecosystem .mjm-feature .mjm-actions{margin-top:22px}
 #mjm-ecosystem .mjm-press-link{border:1px solid var(--mjm-line);background:var(--mjm-bg);padding:16px 18px;text-decoration:none;display:block;transition:.2s ease}
 #mjm-ecosystem .mjm-press-link:hover{border-color:var(--mjm-gold);transform:translateY(-2px)}
 #mjm-ecosystem .mjm-press-link strong{display:block;font-family:var(--mjm-display);font-size:1.02rem;letter-spacing:-.035em;margin-bottom:6px}
 #mjm-ecosystem .mjm-press-link span{display:block;color:var(--mjm-muted);font-size:.82rem;line-height:1.5}
 @media(max-width:900px){
   #mjm-ecosystem .mjm-press{grid-template-columns:1fr}
+  #mjm-ecosystem .mjm-feature{grid-template-columns:1fr}
   #mjm-ecosystem .mjm-hero-grid,#mjm-ecosystem .mjm-section-head{grid-template-columns:1fr}
   #mjm-ecosystem .mjm-projects{grid-template-columns:repeat(2,minmax(0,1fr))}
   #mjm-ecosystem .mjm-stage-list{grid-template-columns:repeat(5,210px);overflow-x:auto;scroll-snap-type:x proximity}
@@ -155,6 +162,24 @@
       </div>
     </div>
   </header>
+
+  <section class="mjm-section mjm-section-alt" aria-labelledby="mjm-fall-essay-title">
+    <div class="mjm-shell">
+      <div class="mjm-feature">
+        <div>
+          <span class="mjm-feature-kicker">New Fall 2026 public scholarship</span>
+          <h2 id="mjm-fall-essay-title">The Pouch and the <span>Bypass.</span></h2>
+          <p>Three diagnoses of the screen debate meet one practical question: what does a phone policy change, and what educational work remains?</p>
+          <div class="mjm-actions">
+            <a class="mjm-button mjm-button-primary" href="https://minerclass.github.io/screen-time-wrong-question/pouch-and-bypass/">Explore the companion</a>
+            <a class="mjm-button" href="https://micahminer.com/blog/">Read Micah's blog</a>
+            <a class="mjm-button" href="https://micahminer.com/consulting/">Speaking and consulting</a>
+          </div>
+        </div>
+        <div class="mjm-feature-thesis">A phone pouch can change access, attention, and enforcement. It cannot determine what educators build in the space it creates.</div>
+      </div>
+    </div>
+  </section>
 
   <section class="mjm-section" id="mjm-press">
     <div class="mjm-shell">
@@ -246,7 +271,7 @@
         <p>Search the current GitHub Pages portfolio, micahminer.com pathways, and public research-to-practice writing. Specialized hubs remain the best way to follow each strand as a coherent journey.</p>
       </div>
       <div class="mjm-archive-stats" aria-label="Archive coverage">
-        <span class="mjm-archive-stat">46 featured GitHub Pages sites</span>
+        <span class="mjm-archive-stat">47 featured GitHub Pages sites</span>
         <span class="mjm-archive-stat">18 micahminer.com entries</span>
       </div>
       <div class="mjm-tools" role="toolbar" aria-label="Filter the public ecosystem">
@@ -354,6 +379,7 @@
     githubProject('writing','genAI-ML-the-long-arc-site','The Long Arc','Historical account of machine intelligence and technologies of the word, 1950–2026.','Conceptual companion'),
     githubProject('writing','beyond-frictionless-social-studies','Beyond Frictionless Social Studies','Constructivist AI integration, civic reasoning, and disciplinary practice through C.O.R.E. and H.E.A.R.T.','Public scholarship'),
     githubProject('writing','screen-time-wrong-question','Screen Time Is the Wrong Question','Interactive essay reframing screen time around the practices a screen asks students to perform.','Published companion'),
+    githubProject('writing','screen-time-wrong-question','The Pouch and the Bypass','Interactive Fall 2026 companion mapping three screen-debate diagnoses, the limits of phone policy, and six questions for district leaders.','Fall 2026 companion','screen-time-wrong-question/pouch-and-bypass'),
     githubProject('writing','technoskepticism-primer','Technoskepticism primer','The five technoskeptical questions, their Postman roots, and a pedagogical-friction overlay.','Public primer'),
     githubProject('writing','load-bearing','Load-Bearing','Interactive essay on the institutional conditions that make durable learning possible.','Interactive essay'),
     githubProject('writing','algorithmic-stream','Algorithmic Stream','Microsite exploring how algorithmic systems reorganize attention, knowledge, and digital experience.','Interactive essay'),
