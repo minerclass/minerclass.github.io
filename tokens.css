@@ -14,8 +14,12 @@
       to load the page keeps its current appearance.
    2. For a paper-ground page, set the attribute on the root element:
         <html lang="en" data-mjm-ground="light">
-   3. Point the page's existing tokens at these, keeping its own accent:
-        :root { --bg: var(--mjm-bg); --accent: var(--mjm-teal); }
+   3. Point the page's existing tokens at these, ALWAYS WITH A FALLBACK equal to
+      the value the page used before:
+        :root { --bg: var(--mjm-bg, #101415); }
+      The fallback is what makes step 1's promise true. A bare var(--mjm-bg) is
+      invalid at computed-value time if this file fails to load, which would
+      break the page rather than leave it unchanged.
 
    WHAT THIS IS FOR
    A 2026-08-31 review across 31 repositories found 27 distinct page
