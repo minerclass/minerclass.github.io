@@ -5,6 +5,54 @@ credentials, or tokens.
 
 ---
 
+## 2026-08-31 - Ecosystem map: the first diagram in the hub layer
+
+**Why.** A design review across 31 repositories found **zero `<svg>` and zero `<details>`
+on every hub page**, measured against the rendered DOM rather than the source. Every hub
+was text in boxes; nothing anywhere showed the shape of the thing. This root hub carries
+68 project cards, 159 links, and roughly 2,400 words with no orientation graphic at all.
+
+**Changed.** `index.html`: an `.mjm-map` above the catalog filter bar, plus styles and a
+render block.
+
+- Six domain nodes, one per catalog category, each an SVG disc in that domain's existing
+  accent colour with its count inside.
+- **Counts are computed at runtime from the rendered catalog**, not hardcoded, so they
+  cannot drift as the catalog grows. Verified against a live tally: 16 / 21 / 7 / 9 / 5 /
+  10, totalling the 68 entries present.
+- Disc radius scales with the square root of the count, so **area** is proportional to
+  volume rather than radius, which would overstate the larger domains.
+- Selecting a node dispatches a click on the existing `.mjm-filter` button rather than
+  reimplementing the filter, so filtering logic stays in exactly one place. The map also
+  listens to those buttons so it stays in step when the filter bar is used directly.
+
+**This is the good version of the handoff's "constellation map".** That idea was declined
+earlier because it proposed *replacing* a searchable 68-entry catalog with a node graph,
+which would have cost usability. Added above the catalog instead, it gives orientation
+without taking away search or filtering.
+
+**Accessibility.** Each node is a real `<button>` with `aria-pressed`, so it is keyboard
+operable and announced as a toggle; the SVG inside is `aria-hidden` and decorative. The
+count is also rendered as text, so the information does not depend on disc size.
+
+**Verified in a real browser.** Clicking the games node filters the catalog to exactly 9,
+matching the tally; the matching filter button reports `aria-pressed="true"`; reset
+restores all 68; exactly one node is pressed at a time. At 375px the rail reflows from six
+columns to three with **zero** overflowing elements inside the map and no page-level
+horizontal scroll. A real Tab keypress moves between nodes and the focused node matches
+`:focus-visible`, showing the shared gold ring from the token layer. Zero console errors.
+
+**Note on validation.** A naive tag-balance check reports a false mismatch on this file
+because the script builds HTML inside JS strings. Strip `<script>` and `<style>` before
+checking; the markup is balanced.
+
+**Pre-existing, unrelated.** At 375px, twelve `.mjm-stage` elements extend past the
+viewport. They sit in their own `overflow-x: auto` scroller and cause no page-level
+scroll.
+
+
+---
+
 ## 2026-08-31 - Link the shared token file from the root hub
 
 This repo hosts `tokens.css`, and its own `--mjm-*` block was the basis for the canonical

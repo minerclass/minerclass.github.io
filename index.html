@@ -145,6 +145,33 @@
 #mjm-ecosystem .mjm-qs-more a{color:var(--mjm-muted);font-size:.8rem;text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
 #mjm-ecosystem .mjm-qs-more a:hover{color:var(--mjm-ink);border-bottom-color:var(--qs-color)}
 @media(max-width:900px){#mjm-ecosystem .mjm-quickstart{grid-template-columns:1fr}}
+
+/* ---- Ecosystem map -------------------------------------------------------
+   A review across 31 repositories found zero diagrams anywhere in the hub
+   layer: every hub was text in boxes, with nothing showing the shape of the
+   thing. This is that shape. Each domain is a real <button> so it is keyboard
+   operable and announced correctly; the SVG inside is decorative and the disc
+   area is proportional to how much work sits in that domain. Clicking one
+   dispatches a click on the matching filter button above the catalog, so the
+   filter logic stays in exactly one place. */
+#mjm-ecosystem .mjm-map{margin:0 0 30px}
+#mjm-ecosystem .mjm-map-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px}
+#mjm-ecosystem .mjm-map-head p{margin:0;color:var(--mjm-muted);font-size:.92rem;max-width:60ch}
+#mjm-ecosystem .mjm-map-reset{border:1px solid var(--mjm-line);background:transparent;color:var(--mjm-muted);padding:7px 13px;cursor:pointer;font:700 .62rem/1 var(--mjm-mono);letter-spacing:.06em;text-transform:uppercase}
+#mjm-ecosystem .mjm-map-reset:hover{border-color:var(--mjm-gold);color:var(--mjm-ink)}
+#mjm-ecosystem .mjm-map-rail{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;padding:22px 0 4px}
+#mjm-ecosystem .mjm-map-rail::before{content:"";position:absolute;left:6%;right:6%;top:52px;height:1px;background:var(--mjm-line)}
+#mjm-ecosystem .mjm-node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:9px;border:0;background:transparent;color:inherit;cursor:pointer;padding:4px 2px;text-align:center}
+#mjm-ecosystem .mjm-node svg{display:block;overflow:visible}
+#mjm-ecosystem .mjm-node .disc{fill:var(--node);fill-opacity:.16;stroke:var(--node);stroke-width:1.5;transition:fill-opacity .2s ease}
+#mjm-ecosystem .mjm-node .count{fill:var(--mjm-ink);font:700 .82rem/1 var(--mjm-mono);text-anchor:middle;dominant-baseline:central}
+#mjm-ecosystem .mjm-node-label{font:700 .6rem/1.3 var(--mjm-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mjm-muted)}
+#mjm-ecosystem .mjm-node:hover .disc,#mjm-ecosystem .mjm-node[aria-pressed="true"] .disc{fill-opacity:.44}
+#mjm-ecosystem .mjm-node:hover .mjm-node-label,#mjm-ecosystem .mjm-node[aria-pressed="true"] .mjm-node-label{color:var(--node)}
+@media(max-width:680px){
+  #mjm-ecosystem .mjm-map-rail{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  #mjm-ecosystem .mjm-map-rail::before{display:none}
+}
 </style>
 
 <div id="mjm-ecosystem">
@@ -333,6 +360,14 @@
         <span class="mjm-archive-stat">47 featured GitHub Pages sites</span>
         <span class="mjm-archive-stat">18 micahminer.com entries</span>
       </div>
+      <div class="mjm-map" id="mjm-map">
+        <div class="mjm-map-head">
+          <p>The shape of the work. Disc size reflects how much sits in each domain; select one to filter the catalog below.</p>
+          <button class="mjm-map-reset" type="button" id="mjm-map-reset">Show all</button>
+        </div>
+        <div class="mjm-map-rail" id="mjm-map-rail" role="group" aria-label="Filter the catalog by domain"></div>
+      </div>
+
       <div class="mjm-tools" role="toolbar" aria-label="Filter the public ecosystem">
         <button class="mjm-filter is-active" type="button" data-filter="all" aria-pressed="true">All</button>
         <button class="mjm-filter" type="button" data-filter="research" aria-pressed="false">Research</button>
@@ -527,6 +562,69 @@
   }));
   search.addEventListener('input', apply);
   apply();
+
+  /* Ecosystem map. Counts come from the rendered catalog so they stay true as it
+     grows. Selecting a domain dispatches a click on the existing filter button,
+     which keeps the filtering logic in one place. */
+  (function () {
+    const rail = root.querySelector('#mjm-map-rail');
+    if (!rail) return;
+
+    const order = ['research', 'writing', 'presentations', 'games', 'leadership', 'main'];
+    const tally = {};
+    root.querySelectorAll('.mjm-project').forEach(card => {
+      tally[card.dataset.cat] = (tally[card.dataset.cat] || 0) + 1;
+    });
+
+    const max = Math.max(...order.map(k => tally[k] || 0), 1);
+
+    order.forEach(key => {
+      const n = tally[key] || 0;
+      // area proportional to count, so a domain twice the size reads twice as big
+      const r = 13 + 15 * Math.sqrt(n / max);
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'mjm-node';
+      btn.dataset.cat = key;
+      btn.setAttribute('aria-pressed', 'false');
+      btn.style.setProperty('--node', colors[key]);
+      btn.innerHTML =
+        '<svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true" focusable="false">' +
+          '<circle class="disc" cx="31" cy="31" r="' + r.toFixed(1) + '"></circle>' +
+          '<text class="count" x="31" y="31">' + n + '</text>' +
+        '</svg>' +
+        '<span class="mjm-node-label">' + labels[key] + '</span>';
+      btn.addEventListener('click', () => select(key));
+      rail.appendChild(btn);
+    });
+
+    const nodes = [...rail.querySelectorAll('.mjm-node')];
+
+    function paint(active) {
+      nodes.forEach(n => n.setAttribute('aria-pressed', String(n.dataset.cat === active)));
+    }
+
+    function select(key) {
+      const target = root.querySelector('.mjm-filter[data-filter="' + key + '"]');
+      if (target) target.click();
+      paint(key);
+    }
+
+    const reset = root.querySelector('#mjm-map-reset');
+    if (reset) {
+      reset.addEventListener('click', () => {
+        const all = root.querySelector('.mjm-filter[data-filter="all"]');
+        if (all) all.click();
+        paint(null);
+      });
+    }
+
+    // Keep the map in step when the filter bar or search is used directly.
+    root.querySelectorAll('.mjm-filter').forEach(b => {
+      b.addEventListener('click', () => paint(b.dataset.filter === 'all' ? null : b.dataset.filter));
+    });
+  })();
+
 })();
 </script>
 </body>
