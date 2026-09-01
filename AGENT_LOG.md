@@ -5,6 +5,20 @@ credentials, or tokens.
 
 ---
 
+## 2026-08-31 - Link the shared token file from the root hub
+
+This repo hosts `tokens.css`, and its own `--mjm-*` block was the basis for the canonical
+palette, but it was not actually loading the shared file. It now does, via a relative
+`tokens.css` link.
+
+**Nothing changes visually.** The local `#mjm-ecosystem` block still defines the same
+names with the same values and is more specific, so it continues to win. The point of the
+link is that later additions to the shared file, such as the paper-ground accent inks,
+the radius and measure tokens, and the shared focus ring, become available here too
+without duplicating them.
+
+---
+
 ## 2026-08-31 — Audience quick-start routes
 
 **Context.** Tier 1 scope from an agent handoff titled "Dissertation Repositories Visual
