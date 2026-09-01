@@ -1,0 +1,112 @@
+/* ==========================================================================
+   MJM shared design tokens
+   Canonical source: https://minerclass.github.io/tokens.css
+   --------------------------------------------------------------------------
+   Every site in this ecosystem deploys under minerclass.github.io, so this file
+   is same-origin for all of them and can be linked directly.
+
+   HOW TO ADOPT
+   1. Link this file BEFORE the page's own stylesheet:
+        <link rel="stylesheet" href="https://minerclass.github.io/tokens.css">
+        <link rel="stylesheet" href="styles.css">
+      Load order matters. The page's own :root comes second and therefore wins,
+      so adopting this file cannot break an existing page, and if it ever fails
+      to load the page keeps its current appearance.
+   2. For a paper-ground page, set the attribute on the root element:
+        <html lang="en" data-mjm-ground="light">
+   3. Point the page's existing tokens at these, keeping its own accent:
+        :root { --bg: var(--mjm-bg); --accent: var(--mjm-teal); }
+
+   WHAT THIS IS FOR
+   A 2026-08-31 review across 31 repositories found 27 distinct page
+   backgrounds, no shared token naming, and only two class names common to more
+   than half the sites. The goal here is family resemblance, not uniformity:
+   shared ground, ink, and type; each site keeps its own accent and character.
+   ========================================================================== */
+
+:root {
+  /* ---- Accent family -----------------------------------------------------
+     Constant across both grounds. A site picks one as its --mjm-accent and
+     keeps its own identity within a recognisable family. */
+  --mjm-gold: #f0bd45;
+  --mjm-teal: #67b9aa;
+  --mjm-violet: #aaa1dc;
+  --mjm-blue: #70aee7;
+  --mjm-rust: #dc895e;
+  --mjm-rose: #e5a1b0;
+  --mjm-green: #7fbf7a;
+
+  /* Default accent. Override per site. */
+  --mjm-accent: var(--mjm-gold);
+
+  /* ---- Dark ground (default) --------------------------------------------
+     Measured against --mjm-bg: ink 16.0:1, muted 8.3:1. Every accent below
+     clears 4.5:1 on this ground (lowest is rust at 6.9:1). */
+  --mjm-bg: #111318;
+  --mjm-surface: #181b22;
+  --mjm-surface-2: #20242d;
+  --mjm-line: rgba(240, 238, 232, 0.16);
+  --mjm-ink: #f0eee8;
+  --mjm-muted: #a8adb7;
+
+  /* ---- Type --------------------------------------------------------------
+     Georgia leads the serif stack because it is already the most common body
+     face in the ecosystem; the mono stack carries eyebrows and labels, the
+     second most common pattern. */
+  --mjm-serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --mjm-sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mjm-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  /* ---- Rhythm ------------------------------------------------------------ */
+  --mjm-radius: 8px;
+  --mjm-radius-lg: 12px;
+  --mjm-shell: 1160px;
+  --mjm-measure: 68ch;
+
+  /* ---- Focus -------------------------------------------------------------
+     One ring for the whole ecosystem. Sites that removed their outline can
+     restore it with: :focus-visible { outline: var(--mjm-focus); outline-offset: var(--mjm-focus-offset); } */
+  --mjm-focus: 2px solid var(--mjm-accent);
+  --mjm-focus-offset: 3px;
+}
+
+/* ---- Paper ground ---------------------------------------------------------
+   For the ten sites that read as documents rather than instruments.
+   Measured against --mjm-bg: ink 14.5:1, muted 5.4:1. Both clear AA. */
+:root[data-mjm-ground="light"] {
+  --mjm-bg: #f7efe0;
+  --mjm-surface: #fffaf0;
+  --mjm-surface-2: #f1e7d6;
+  --mjm-line: rgba(16, 32, 43, 0.16);
+  --mjm-ink: #10202b;
+  --mjm-muted: #55636b;
+}
+
+/* Accent inks for the paper ground. The base accents above are tuned for the
+   dark ground and are far too light on paper: measured against #f7efe0 they run
+   1.5:1 to 2.4:1, which fails even the 3:1 required of meaningful UI borders. On
+   paper they are decorative fills only. Use these inks for anything that has to
+   be perceivable, text or border. Each clears 4.5:1 (lowest is blue at 4.6:1). */
+:root[data-mjm-ground="light"] {
+  --mjm-gold-ink: #8a6412;
+  --mjm-teal-ink: #2a7268;
+  --mjm-violet-ink: #59509b;
+  --mjm-blue-ink: #3f6ea8;
+  --mjm-rust-ink: #a9542b;
+  --mjm-rose-ink: #a4415a;
+  --mjm-green-ink: #4a7340;
+  --mjm-accent-ink: var(--mjm-gold-ink);
+}
+
+/* Respect a reduced-motion preference everywhere this file is loaded. Sites
+   that already handle it are unaffected; sites that do not get it for free. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
