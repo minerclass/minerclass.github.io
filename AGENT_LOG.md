@@ -5,6 +5,26 @@ credentials, or tokens.
 
 ---
 
+## 2026-09-23 - Add the E-rate tracker, with its sources cited on the card
+
+**Changed.** `index.html` and `README.md`.
+
+- New `leadership` entry for `erate-tracker` ("Before the Bell: E-Rate Tracker"), a policy
+  tracker for the FCC's 2026 E-rate review (FCC 26-41, Docket 26-133).
+- Cards can now carry an optional `cites` array, rendered as a "Built from" line with links
+  between the description and the card links. The new card uses it to credit the two posts
+  the tracker is built from: Stacy Hawthorne's CoSN post "Before a Single Student Logs On"
+  (July 30, 2026) and Julia Gilban-Cohen's GovTech report "School Leaders Mobilize as FCC
+  Weighs Future of E-Rate" (September 10, 2026). No other card changes.
+- Counts follow the existing convention (unique sites, excluding this hub's own card and the
+  second page of `screen-time-wrong-question`): 48 to 49 featured sites, 66 to 67 entries.
+  The runtime count reads 70 because it counts every card.
+
+**Verified** in a local browser against a fresh clone: the card renders, both citation
+links resolve, the runtime count shows 70 of 70, zero console errors.
+
+---
+
 ## 2026-08-31 - Ecosystem map: the first diagram in the hub layer
 
 **Why.** A design review across 31 repositories found **zero `<svg>` and zero `<details>`
