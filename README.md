@@ -11,7 +11,7 @@ It connects Micah Miner's public research, writing, presentations, games, profes
 - 67 searchable public entries
 - 5 primary pathways: research, writing, presentations, games, and practice
 
-The hub intentionally excludes source-only archives and examples that no longer fit the current professional ecosystem. Dissertation-facing descriptions identify the defended Chapters 1–3 proposal. They do not report findings, and they do not expose participant data or IRB-protected records.
+The hub intentionally excludes source-only archives and examples that no longer fit the current professional ecosystem. Dissertation-facing descriptions identify the defended Chapters 1–3 proposal, the October 7, 2026 exempt IRB approval, and the start of data collection in October 2026. They do not report findings, and they do not expose participant data or IRB-protected records.
 
 ## Links
 - **Live Site**: [minerclass.github.io](https://minerclass.github.io/)
