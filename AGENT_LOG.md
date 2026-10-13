@@ -5,6 +5,20 @@ credentials, or tokens.
 
 ---
 
+## 2026-10-12 - Update the atlas card for the machine map and Trainium
+
+**Changed.** `index.html` only.
+
+- The `ai-systems-atlas` card in `games` now mentions the year-by-year machine map with
+  links dated to company announcements and the labeled chip schematics through Trainium,
+  matching what the atlas shipped today. Google DeepMind is named in full. Status label
+  unchanged. No other card changes. No count changes.
+
+**Verified** in a local browser against the surface-intel `Developer` clone: the card
+renders with the new text, both card links resolve to live pages, zero console errors.
+
+---
+
 ## 2026-10-12 - Reword The Stack card so it no longer duplicates the atlas card
 
 **Changed.** `index.html` only.
