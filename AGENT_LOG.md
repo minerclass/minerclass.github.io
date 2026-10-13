@@ -5,6 +5,23 @@ credentials, or tokens.
 
 ---
 
+## 2026-10-12 - Reword The Stack card so it no longer duplicates the atlas card
+
+**Changed.** `index.html` only.
+
+- The `labs-on-silicon` card ("The Stack") in `games` now describes it as the one-screen
+  sketch and the short companion to the AI Systems Atlas, which carries the fuller, dated
+  map. Its status label changes from "Interactive explainer" to "One-screen companion".
+  The atlas card and every other card are unchanged. No count changes.
+- Context: the atlas gained a year-aware machine map, labeled chip schematics, and
+  Trainium earlier today, and The Stack now points to it. The two cards had read as
+  duplicates since both were added on 2026-10-12.
+
+**Verified** in a local browser against the surface-intel `Developer` clone: the card
+renders with the new text, both card links resolve to live pages, zero console errors.
+
+---
+
 ## 2026-09-23 - Add the E-rate tracker, with its sources cited on the card
 
 **Changed.** `index.html` and `README.md`.
