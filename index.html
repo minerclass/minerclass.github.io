@@ -137,17 +137,42 @@
 
 }
 @media(prefers-reduced-motion:reduce){#mjm-ecosystem *{scroll-behavior:auto!important;transition:none!important}}
-#mjm-ecosystem .mjm-quickstart{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-#mjm-ecosystem .mjm-qs{border:1px solid var(--mjm-line);background:var(--mjm-bg);padding:26px;display:flex;flex-direction:column}
-#mjm-ecosystem .mjm-qs-role{font:700 .66rem/1 var(--mjm-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--qs-color)}
-#mjm-ecosystem .mjm-qs h3{font-family:var(--mjm-display);font-size:1.3rem;line-height:1.1;letter-spacing:-.04em;margin:22px 0 10px}
-#mjm-ecosystem .mjm-qs>p{color:var(--mjm-muted);font-size:.88rem;margin:0 0 20px;flex:1}
-#mjm-ecosystem .mjm-qs-primary{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:0 15px;border:1px solid var(--qs-color);color:var(--qs-color);text-decoration:none;font:700 .68rem/1 var(--mjm-mono);letter-spacing:.06em;text-transform:uppercase;transition:.2s ease}
-#mjm-ecosystem .mjm-qs-primary:hover{background:var(--qs-color);color:#111318}
-#mjm-ecosystem .mjm-qs-more{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px}
-#mjm-ecosystem .mjm-qs-more a{color:var(--mjm-muted);font-size:.8rem;text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
-#mjm-ecosystem .mjm-qs-more a:hover{color:var(--mjm-ink);border-bottom-color:var(--qs-color)}
-@media(max-width:900px){#mjm-ecosystem .mjm-quickstart{grid-template-columns:1fr}}
+/* ---- Pathfinder ----------------------------------------------------------
+   The pathways below sort the work by artifact type. This sorts it by who is
+   arriving and how much time they have. Choices are native toggle buttons, so
+   Tab and Enter or Space work without extra handlers. Nothing is stored. */
+#mjm-ecosystem .mjm-pathfinder{--pf-color:var(--mjm-gold);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);border:1px solid var(--mjm-line);background:var(--mjm-surface)}
+#mjm-ecosystem .mjm-pf-controls{padding:28px;display:grid;gap:26px;align-content:start;border-right:1px solid var(--mjm-line)}
+#mjm-ecosystem .mjm-pf-ctl{display:grid;gap:12px}
+#mjm-ecosystem .mjm-pf-label{font:700 .66rem/1 var(--mjm-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mjm-muted)}
+#mjm-ecosystem .mjm-pf-seg{display:flex;flex-wrap:wrap;gap:8px}
+#mjm-ecosystem .mjm-pf-seg button{min-height:44px;border:1px solid var(--mjm-line);background:var(--mjm-bg);color:var(--mjm-ink);padding:9px 13px;cursor:pointer;font:700 .66rem/1.35 var(--mjm-mono);letter-spacing:.06em;text-transform:uppercase;text-align:left;transition:.2s ease}
+#mjm-ecosystem .mjm-pf-seg button:hover{border-color:var(--pf-color)}
+#mjm-ecosystem .mjm-pf-seg button[aria-pressed="true"]{background:var(--pf-color);border-color:var(--pf-color);color:#111318}
+#mjm-ecosystem .mjm-pf-out{padding:28px;background:var(--mjm-bg);min-width:0}
+#mjm-ecosystem .mjm-pf-summary{margin:0 0 6px;font:700 .66rem/1.4 var(--mjm-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--pf-color)}
+#mjm-ecosystem .mjm-pf-route{list-style:none;margin:0;padding:0}
+#mjm-ecosystem .mjm-pf-route li{display:grid;grid-template-columns:3.2rem minmax(0,1fr);gap:0 14px;padding:20px 0;border-bottom:1px solid var(--mjm-line)}
+#mjm-ecosystem .mjm-pf-n{font-family:var(--mjm-display);font-size:1.6rem;line-height:1;letter-spacing:-.05em;color:var(--pf-color)}
+#mjm-ecosystem .mjm-pf-stop{min-width:0}
+#mjm-ecosystem .mjm-pf-kind{display:inline-flex;margin-bottom:10px;padding:4px 7px;border:1px solid var(--mjm-line);color:var(--mjm-muted);font:700 .58rem/1 var(--mjm-mono);letter-spacing:.08em;text-transform:uppercase}
+#mjm-ecosystem .mjm-pf-stop h3{margin:0 0 6px;font-family:var(--mjm-display);font-size:1.16rem;line-height:1.15;letter-spacing:-.035em}
+#mjm-ecosystem .mjm-pf-stop h3 a{text-decoration:none;border-bottom:1px solid var(--mjm-line)}
+#mjm-ecosystem .mjm-pf-stop h3 a:hover{color:var(--pf-color);border-color:var(--pf-color)}
+#mjm-ecosystem .mjm-pf-stop p{margin:0;color:var(--mjm-muted);font-size:.88rem}
+#mjm-ecosystem .mjm-pf-extra{display:inline-block;margin-top:10px;font:700 .62rem/1 var(--mjm-mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--mjm-line);padding-bottom:4px}
+#mjm-ecosystem .mjm-pf-extra:hover{color:var(--pf-color);border-color:var(--pf-color)}
+#mjm-ecosystem .mjm-pf-alt{margin:18px 0 0;color:var(--mjm-muted);font-size:.84rem}
+#mjm-ecosystem .mjm-pf-alt a{color:var(--mjm-ink);text-underline-offset:.18em}
+#mjm-ecosystem .mjm-pf-alt a:hover{color:var(--pf-color)}
+@media(max-width:900px){
+  #mjm-ecosystem .mjm-pathfinder{grid-template-columns:1fr}
+  #mjm-ecosystem .mjm-pf-controls{border-right:0;border-bottom:1px solid var(--mjm-line)}
+}
+@media(max-width:680px){
+  #mjm-ecosystem .mjm-pf-controls,#mjm-ecosystem .mjm-pf-out{padding:20px 16px}
+  #mjm-ecosystem .mjm-pf-route li{grid-template-columns:2.4rem minmax(0,1fr);gap:0 10px}
+}
 
 /* ---- Ecosystem map -------------------------------------------------------
    A review across 31 repositories found zero diagrams anywhere in the hub
@@ -206,48 +231,42 @@
     </div>
   </header>
 
-  <!-- Audience quick start. The pathways section below sorts the work by
-       artifact type; this sorts it by who is arriving. Three routes only,
-       each with one primary destination and two follow-ons. -->
+  <!-- Pathfinder. The pathways section below sorts the work by artifact type;
+       this sorts it by who is arriving and how much time they have. Four roles
+       by three time budgets, each returning an ordered route of two or three
+       existing public sites. Route data lives in the script block below. -->
   <section class="mjm-section" id="mjm-start" aria-labelledby="mjm-start-title">
     <div class="mjm-shell">
       <div class="mjm-section-head">
         <h2 id="mjm-start-title">Start where you <span>stand.</span></h2>
-        <p>Three quick routes into the same body of work, depending on the decisions you are actually making. Everything here is public and explanatory; none of it collects participant data.</p>
+        <p>Pick who you are and how much time you have. You get a short, ordered route through work that is already public. Everything here is public and explanatory; none of it collects participant data.</p>
       </div>
-      <div class="mjm-quickstart">
-        <article class="mjm-qs" style="--qs-color:var(--mjm-rust)">
-          <span class="mjm-qs-role">For district and system leaders</span>
-          <h3>Decisions about policy, procurement, and governance</h3>
-          <p>Start with the technology-ecology simulator: introduce one tool into a working school system and surface its hidden prices, uneven effects, and dependencies before committing.</p>
-          <a class="mjm-qs-primary" href="https://minerclass.github.io/answerable/" target="_blank" rel="noopener"><span>Open Answerable</span><span aria-hidden="true">&#8599;</span></a>
-          <ul class="mjm-qs-more">
-            <li><a href="https://minerclass.github.io/screen-time-wrong-question/pouch-and-bypass/" target="_blank" rel="noopener">The Pouch and the Bypass &mdash; phone policy and device models</a></li>
-            <li><a href="https://minerclass.github.io/technoskepticism-primer/" target="_blank" rel="noopener">Technoskepticism primer &mdash; five questions to ask first</a></li>
-          </ul>
-        </article>
-
-        <article class="mjm-qs" style="--qs-color:var(--mjm-teal)">
-          <span class="mjm-qs-role">For classroom teachers</span>
-          <h3>Decisions about assignments, assessment, and struggle</h3>
-          <p>Start with the games hub: short playable spaces for calibrating how much difficulty an assignment should carry, and for telling productive struggle apart from a barrier to access.</p>
-          <a class="mjm-qs-primary" href="https://minerclass.github.io/games-hub/" target="_blank" rel="noopener"><span>Open the games hub</span><span aria-hidden="true">&#8599;</span></a>
-          <ul class="mjm-qs-more">
-            <li><a href="https://minerclass.github.io/friction-game/" target="_blank" rel="noopener">Friction Lab &mdash; calibrate challenge without raising barriers</a></li>
-            <li><a href="https://minerclass.github.io/load-bearing/" target="_blank" rel="noopener">Load-Bearing &mdash; when a polished artifact hides thin learning</a></li>
-          </ul>
-        </article>
-
-        <article class="mjm-qs" style="--qs-color:var(--mjm-gold)">
-          <span class="mjm-qs-role">For researchers and doctoral students</span>
-          <h3>The study, its framework, and its evidence base</h3>
-          <p>Start with the dissertation overview: the purpose, the three friction dimensions and their infrastructural base, and how the qualitative and quantitative strands converge. The Chapters 1–3 proposal defense passed on August 13, 2026. NLU IRB approved the study as Exempt on October 7, 2026, and data collection began in October 2026. This hub reports no findings.</p>
-          <a class="mjm-qs-primary" href="https://minerclass.github.io/dissertation-overview/" target="_blank" rel="noopener"><span>Open the overview</span><span aria-hidden="true">&#8599;</span></a>
-          <ul class="mjm-qs-more">
-            <li><a href="https://minerclass.github.io/friction-atlas/" target="_blank" rel="noopener">The Friction Atlas &mdash; the literature review as seven stations</a></li>
-            <li><a href="https://minerclass.github.io/k12-ai-evidence-arc-2024-2026/" target="_blank" rel="noopener">K&ndash;12 AI evidence arc &mdash; the national survey synthesis</a></li>
-          </ul>
-        </article>
+      <div class="mjm-pathfinder" id="mjm-pathfinder">
+        <div class="mjm-pf-controls">
+          <div class="mjm-pf-ctl">
+            <span class="mjm-pf-label" id="mjm-pf-role-label">I am</span>
+            <div class="mjm-pf-seg" id="mjm-pf-role" role="group" aria-labelledby="mjm-pf-role-label">
+              <button type="button" data-role="teach" aria-pressed="false">A teacher or coach</button>
+              <button type="button" data-role="lead" aria-pressed="true">A school or district leader</button>
+              <button type="button" data-role="sch" aria-pressed="false">A researcher or doctoral reader</button>
+              <button type="button" data-role="pub" aria-pressed="false">A parent or board member</button>
+            </div>
+          </div>
+          <div class="mjm-pf-ctl">
+            <span class="mjm-pf-label" id="mjm-pf-time-label">I have</span>
+            <div class="mjm-pf-seg" id="mjm-pf-time" role="group" aria-labelledby="mjm-pf-time-label">
+              <button type="button" data-time="q" aria-pressed="false">A few minutes</button>
+              <button type="button" data-time="h" aria-pressed="true">Under an hour</button>
+              <button type="button" data-time="s" aria-pressed="false">A team session</button>
+            </div>
+          </div>
+        </div>
+        <div class="mjm-pf-out">
+          <p class="mjm-pf-summary" id="mjm-pf-summary" aria-live="polite"></p>
+          <ol class="mjm-pf-route" id="mjm-pf-route"></ol>
+          <noscript><p class="mjm-pf-alt">The route picker needs JavaScript. The five pathways below link to the same work by type.</p></noscript>
+          <p class="mjm-pf-alt">Prefer to browse by type? <a href="#mjm-pathways">Choose a pathway</a> or <a href="#mjm-archive">search the ecosystem</a>.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -360,7 +379,7 @@
         <p>Search the current GitHub Pages portfolio, micahminer.com pathways, and public research-to-practice writing. Specialized hubs remain the best way to follow each strand as a coherent journey.</p>
       </div>
       <div class="mjm-archive-stats" aria-label="Archive coverage">
-        <span class="mjm-archive-stat">53 featured GitHub Pages sites</span>
+        <span class="mjm-archive-stat">57 featured GitHub Pages sites</span>
         <span class="mjm-archive-stat">19 micahminer.com entries</span>
       </div>
       <div class="mjm-map" id="mjm-map">
@@ -486,17 +505,21 @@
     githubProject('presentations','pedagogical-friction-iste-ascd-decks','ISTE+ASCD sessions','Browser-based presentation decks for educators and district leaders.','Professional learning'),
     githubProject('presentations','dupage-roe-session-26','DuPage ROE keynote','What AI Makes Easy Might Be What Students Need to Struggle With.','Keynote'),
     githubProject('presentations','historical-inquiry-friction','Historical inquiry and friction','Interactive session on preserving historical inquiry through pedagogical friction, C.O.R.E., and H.E.A.R.T.','Conference session'),
+    githubProject('presentations','future-ready-not-just-ai-ready','Future Ready, Not Just AI Ready','Interactive district-leader keynote for Turning Vision into Classroom Practice, an Imagine Learning summit, October 6, 2026: what should stay difficult when AI makes schoolwork easier.','Keynote'),
+    githubProject('presentations','pd365-friction-audit','The Friction Audit','Materials for the three-hour PD365 workshop What Your Phone Policy Cannot Do (October 27, 2026): a deck preview, a policy-to-practice crosswalk, and an annotated Illinois resource set on Public Act 104-0657.','Online workshop'),
 
     githubProject('games','games-hub','Learning games hub','Canonical index of interactive learning games, simulations, and inquiry labs.','Games hub'),
     githubProject('games','ai-systems-atlas','AI Systems Atlas','Company timelines and a year-by-year machine map for NVIDIA, OpenAI, Anthropic, Google, Google DeepMind, X, and xAI, with every link dated to a company announcement, plus labeled chip schematics through Trainium, prompt paths, and a local LLM memory lab.','Interactive learning experience'),
     githubProject('games','labs-on-silicon','The Stack','One-screen sketch of who stands on whose chips: NVIDIA, OpenAI, Anthropic, Google DeepMind, and xAI with X, drawn from the product a person uses down to the chip. The short companion to the AI Systems Atlas, which carries the fuller, dated map.','One-screen companion'),
     githubProject('games','orality_game','Keeper of the Word','Media ecology game about the shifting sensorium across technologies of the word.','Interactive game'),
+    githubProject('games','echoes','Echoes','First-person walk from a grove to a generated landscape through five media environments, each asking for a different kind of physical work. Pairs with Keeper of the Word.','3D walk'),
     githubProject('games','friction-game','Friction Lab','Simulation for calibrating productive challenge without raising exclusionary barriers.','Interactive simulation'),
     githubProject('games','source_game','Keeper of the Source','Source-evaluation game focused on evidence, provenance, and information literacy.','Interactive game'),
     githubProject('games','answerable','Answerable','Visual technology-ecology game for practicing five technoskeptical questions in education.','Interactive game'),
     githubProject('games','dialectical-crucible','Dialectical Crucible','Argumentation-tower game on grounding claims in evidence and the structural integrity of an argument.','Interactive lab'),
     githubProject('games','schema-constructor','Schema Constructor','Reconstruction Era unit simulation contrasting active cognitive connection building with AI bypass.','Interactive lab'),
     githubProject('games','trailhead','Trailhead','Equity-focused simulation of calibrated scaffolding, device bans, AI bypass, and access barriers.','Interactive simulation'),
+    githubProject('games','groundwork','Groundwork','First-person building game about the conditions underneath the learning: the same job on three sites, and an intervention has to match the barrier it is aimed at. Includes a facilitator guide.','3D building game'),
     githubProject('games','load-bearing','Load-Bearing','Flagship visual simulation of unproductive success, process evidence, and the difference between an artifact and learning.','Interactive simulation'),
     githubProject('games','algorithmic-stream','Algorithmic Stream','Flowing-river simulation for lateral reading, source audits, and tertiary algorithmicity.','Interactive simulation'),
     githubProject('games','screen-practice-compass','Screen Practice Compass','Companion experience for asking what cognitive practice a screen activity develops.','Interactive tool'),
@@ -635,6 +658,101 @@
     root.querySelectorAll('.mjm-filter').forEach(b => {
       b.addEventListener('click', () => paint(b.dataset.filter === 'all' ? null : b.dataset.filter));
     });
+  })();
+
+  /* Pathfinder. Each stop is an existing public site; ROUTES orders two or
+     three of them per role and time budget. Durations appear only where the
+     site itself states one. Nothing is written to storage or the URL. */
+  (function () {
+    const panel = root.querySelector('#mjm-pathfinder');
+    if (!panel) return;
+    const G = 'https://minerclass.github.io/';
+    const stops = {
+      lab:{n:'Friction Lab',u:'friction-game/',k:'Game',w:'Sort ten classroom design moves on a map where productive challenge and exclusionary barriers are separate axes, not one dial.'},
+      compass:{n:'Screen Practice Compass',u:'screen-practice-compass/',k:'Tool',w:'Asks what cognitive practice a screen activity actually develops.'},
+      load:{n:'Load-Bearing',u:'load-bearing/',k:'Simulation',w:'Design a unit and watch it become a bridge. Structural thinking carries the load; polish alone gives way.'},
+      trail:{n:'Trailhead',u:'trailhead/',k:'Simulation',w:'Design a support trail and watch four hikers attempt it: struggle that builds versus barriers that block.'},
+      inquiry:{n:'When AI Does the Thinking',u:'historical-inquiry-friction/',k:'Deck and games',w:'A secondary history session on preserving historical inquiry, with companion inquiry games for a team to play together.'},
+      schema:{n:'Schema Constructor',u:'schema-constructor/',k:'Simulation',w:'A Reconstruction Era unit that contrasts building connections yourself with handing the work to an AI bypass.'},
+      crucible:{n:'Dialectical Crucible',u:'dialectical-crucible/',k:'Simulation',w:'An argumentation tower: a claim stands only as well as the evidence beneath it.'},
+      screen:{n:'Screen Time Is the Wrong Question',u:'screen-time-wrong-question/',k:'Essay companion',w:'Interactive companion to the CoSN essay: ask what the screen is asking students to practice.'},
+      ban:{n:'After the Ban',u:'screen-time-wrong-question/after-the-ban/',k:'Field guide',w:'What learning should fill the space a device restriction creates, with a follow-through agenda for the next meeting.'},
+      ground:{n:'Groundwork',u:'groundwork/',k:'3D building game',w:'The same job on three sites, where the conditions decide whether the judgment is ever reachable. Allow 15 to 20 minutes.',x:{label:'Facilitator guide',u:'groundwork/facilitator.html'}},
+      devhub:{n:'K–12 Device Policy Evidence Hub',u:'k12-device-policy-evidence-hub/',k:'Evidence hub',w:'An evidence matrix of DOI-linked studies and a policy diagnostic for phone and device decisions.'},
+      answer:{n:'Answerable',u:'answerable/',k:'Game',w:'A technology-ecology game for practicing the five technoskeptical questions on a school system.'},
+      pd365:{n:'The Friction Audit',u:'pd365-friction-audit/',k:'Workshop materials',w:'Materials from the three-hour PD365 workshop on what a phone policy cannot do: a deck preview, a policy-to-practice crosswalk, and an Illinois resource set.'},
+      erate:{n:'Before the Bell: E-Rate Tracker',u:'erate-tracker/',k:'Policy tracker',w:'The FCC’s 2026 E-rate review in one place, with a timeline and a worksheet for a local comment.'},
+      overview:{n:'Dissertation overview',u:'dissertation-overview/',k:'Overview',w:'The study at a glance: purpose, conceptual framework, and research design.'},
+      output:{n:'When the Output Looks Like Learning',u:'When-Output-Looks-Like-Learning/',k:'Article companion',w:'Companion to the published i.e.: inquiry in education article on unproductive success and pedagogical friction.'},
+      atlas:{n:'The Friction Atlas',u:'friction-atlas/',k:'Literature review',w:'The Chapter Two literature review as seven stations, with a searchable 105-source codex.'},
+      scroll:{n:'Pedagogical Friction',u:'pedagogical-friction/',k:'Proposal companion',w:'The argument of Chapters 1 to 3 in one scroll, with the study’s scenario card sort.'},
+      studio:{n:'Dissertation proposal studio',u:'dissertation-proposal-studio/',k:'Literature map',w:'An interactive intellectual history of the references behind the proposal, built from open data files.'},
+      defense:{n:'Proposal defense presentation',u:'diss-proposal-defense/presentation/',k:'Deck',w:'The deck from the August 13, 2026 Chapters 1–3 proposal defense.'},
+      arc:{n:'K–12 AI evidence arc',u:'k12-ai-evidence-arc-2024-2026/',k:'Evidence synthesis',w:'A proposal-stage synthesis of national K–12 teacher AI survey evidence, 2024 to 2026.'},
+      echoes:{n:'Echoes',u:'echoes/',k:'3D walk',w:'A first-person walk through five media environments, from forest to signal. About 4 to 7 minutes.'},
+      word:{n:'Keeper of the Word',u:'orality_game/',k:'Game',w:'Carry one message through five transformations of the word and see what survives.'},
+      primer:{n:'Technoskepticism primer',u:'technoskepticism-primer/',k:'Primer',w:'The five technoskeptical questions, their roots in Neil Postman, and a pedagogical-friction overlay.'},
+      stream:{n:'Algorithmic Stream',u:'algorithmic-stream/',k:'Game',w:'A lateral-reading river game: verify sources before you cite them.'}
+    };
+    const roleColor = {teach:'var(--mjm-teal)',lead:'var(--mjm-rust)',sch:'var(--mjm-gold)',pub:'var(--mjm-rose)'};
+    const ROUTES = {
+      teach:{q:['lab','compass'],h:['load','trail'],s:['inquiry','schema','crucible']},
+      lead:{q:['screen','ban'],h:['ground','devhub'],s:['pd365','answer','erate']},
+      sch:{q:['overview','output'],h:['atlas','scroll'],s:['studio','defense','arc']},
+      pub:{q:['compass','primer'],h:['echoes','word'],s:['ban','devhub','stream']}
+    };
+    const roleButtons = [...panel.querySelectorAll('[data-role]')];
+    const timeButtons = [...panel.querySelectorAll('[data-time]')];
+    const routeList = panel.querySelector('#mjm-pf-route');
+    const summary = panel.querySelector('#mjm-pf-summary');
+    const pressed = list => list.find(b => b.getAttribute('aria-pressed') === 'true') || list[0];
+    let role = pressed(roleButtons).dataset.role;
+    let time = pressed(timeButtons).dataset.time;
+
+    const make = (tag, cls, text) => {
+      const node = document.createElement(tag);
+      if (cls) node.className = cls;
+      if (text) node.textContent = text;
+      return node;
+    };
+    const link = (href, cls, text) => {
+      const a = make('a', cls, text);
+      a.href = href;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      return a;
+    };
+
+    function draw() {
+      roleButtons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.role === role)));
+      timeButtons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.time === time)));
+      panel.style.setProperty('--pf-color', roleColor[role]);
+      const keys = ROUTES[role][time];
+      routeList.textContent = '';
+      keys.forEach((key, i) => {
+        const s = stops[key];
+        const li = make('li');
+        li.appendChild(make('span', 'mjm-pf-n', String(i + 1).padStart(2, '0')));
+        const body = make('div', 'mjm-pf-stop');
+        body.appendChild(make('span', 'mjm-pf-kind', s.k));
+        const h3 = make('h3');
+        const a = link(G + s.u, '', s.n + ' ');
+        a.appendChild(make('span', '', '↗')).setAttribute('aria-hidden', 'true');
+        h3.appendChild(a);
+        body.appendChild(h3);
+        body.appendChild(make('p', '', s.w));
+        if (s.x) body.appendChild(link(G + s.x.u, 'mjm-pf-extra', s.x.label));
+        li.appendChild(body);
+        routeList.appendChild(li);
+      });
+      const who = pressed(roleButtons).textContent.toLowerCase();
+      const when = pressed(timeButtons).textContent.toLowerCase();
+      summary.textContent = `${keys.length} stops for ${who}, ${when}`;
+    }
+
+    roleButtons.forEach(b => b.addEventListener('click', () => { role = b.dataset.role; draw(); }));
+    timeButtons.forEach(b => b.addEventListener('click', () => { time = b.dataset.time; draw(); }));
+    draw();
   })();
 
 })();

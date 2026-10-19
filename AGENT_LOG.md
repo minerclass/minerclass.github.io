@@ -5,6 +5,43 @@ credentials, or tokens.
 
 ---
 
+## 2026-10-19 - Pathfinder in "Start here", and four unlisted sites added
+
+**Changed.** `index.html` and `README.md`.
+
+- The "Start where you stand" section (`#mjm-start`, the nav's "Start here" target) now
+  holds a Pathfinder in place of the three static audience cards from 2026-08-31. A visitor
+  picks one of four roles (teacher or coach; school or district leader; researcher or
+  doctoral reader; parent or board member) and one of three time budgets (a few minutes;
+  under an hour; a team session). The panel returns an ordered route of two or three
+  existing public sites, 12 routes in all, built from 25 sites. The prototype is
+  `friction-formats-2026-10-19/friction-formats.html` in the shared Research folder. Route
+  descriptions are drafts for Micah to rewrite. They were checked against each live page,
+  and claims the pages do not support were dropped. Durations appear only where the site
+  itself states one (Echoes, Groundwork).
+- Controls are native `<button>`s with `aria-pressed` in labelled groups, following the
+  pattern of the catalog filter bar. The route summary is an `aria-live="polite"` line. The
+  panel uses no browser storage, writes nothing to the URL, and has no build step. Role
+  colour reuses the old cards' accents (teal, rust, gold) and adds rose for parents and
+  board members.
+- New catalog cards: `echoes` and `groundwork` in `games`; `future-ready-not-just-ai-ready`
+  and `pd365-friction-audit` in `presentations`. Counts follow the current README
+  convention, where every GitHub card counts: 53 to 57 featured sites and 72 to 76 entries.
+  The archive stat reads 57.
+
+**Verified** in a local browser served from the surface-intel `Developer` clone. All 12 route
+combinations render. Real Tab, Enter, and Space keypresses move through and operate the
+controls, and the shared gold `:focus-visible` ring shows on them. At 375px the panel is one
+column with 44px buttons, no element inside it overflows, and the page has no horizontal
+scroll. The catalog shows 76 of 76, and search finds each new card. Zero console errors.
+Every external link the page produces (144 URLs, including all route stops and
+`groundwork/facilitator.html`) was curled. All `minerclass.github.io` and
+`github.com/minerclass` links returned 200. The 19 micahminer.com links, all pre-existing,
+were unreachable from this network and from an outside fetcher (connection refused on 443)
+on 2026-10-19. LinkedIn returned its usual bot-block code (999).
+
+---
+
 ## 2026-10-12 - Update the atlas card for the machine map and Trainium
 
 **Changed.** `index.html` only.
