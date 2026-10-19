@@ -37,8 +37,8 @@ scroll. The catalog shows 76 of 76, and search finds each new card. Zero console
 Every external link the page produces (144 URLs, including all route stops and
 `groundwork/facilitator.html`) was curled. All `minerclass.github.io` and
 `github.com/minerclass` links returned 200. The 19 micahminer.com links, all pre-existing,
-were unreachable from this network and from an outside fetcher (connection refused on 443)
-on 2026-10-19. LinkedIn returned its usual bot-block code (999).
+were briefly unreachable on the first pass. A re-check later the same day returned 200 for
+all 19. LinkedIn returned its usual bot-block code (999).
 
 ---
 
