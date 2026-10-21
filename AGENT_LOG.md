@@ -5,6 +5,20 @@ credentials, or tokens.
 
 ---
 
+## 2026-10-21 - Raspberry Pi Generations added to the catalog
+
+**Changed.** `index.html` and `README.md`. Written on: surface-arm · claude-code.
+
+- New `games` card, `raspberry-pi-generations`, placed after The Stack so the AI Systems
+  Atlas family sits together. The site went live on 2026-10-21 and the Atlas links to it
+  from station 03.
+- Counts follow the README convention: 57 to 58 featured sites and 76 to 77 entries. The
+  archive stat reads 58.
+- Not changed: `frontier-benchmark-atlas` is a live public site that the catalog still does
+  not list. Left for Micah to decide.
+
+---
+
 ## 2026-10-19 - Pathfinder in "Start here", and four unlisted sites added
 
 **Changed.** `index.html` and `README.md`.

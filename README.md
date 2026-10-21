@@ -6,9 +6,9 @@ It connects Micah Miner's public research, writing, presentations, games, profes
 
 ## Coverage
 
-- 57 featured live GitHub Pages sites
+- 58 featured live GitHub Pages sites
 - 19 micahminer.com pages or current-series essays
-- 76 searchable public entries
+- 77 searchable public entries
 - 5 primary pathways: research, writing, presentations, games, and practice
 
 The hub intentionally excludes source-only archives and examples that no longer fit the current professional ecosystem. Dissertation-facing descriptions identify the defended Chapters 1–3 proposal, the October 7, 2026 exempt IRB approval, and the start of data collection in October 2026. They do not report findings, and they do not expose participant data or IRB-protected records.
